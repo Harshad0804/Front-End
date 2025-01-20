@@ -11,19 +11,19 @@
             <tr>
                 <td>
                     <label for="">FIRST NAME : </label>
-                    <input type="text" placeholder="Your First Name">
+                    <input type="text" placeholder="Your First Name" pattern="[a-zA-Z]{2,12}" required>
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="">MIDDLE NAME : </label>
-                    <input type="text" placeholder="Middle Name">
+                    <input type="text" placeholder="Middle Name" pattern="[a-zA-Z]{2,12}" required>
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="">LAST NAME : </label>
-                    <input type="text" placeholder="Last Name">
+                    <input type="text" placeholder="Last Name" pattern="[a-zA-Z]{2,12}" required>
                 </td>
             </tr>
             <tr>
@@ -62,7 +62,7 @@
                 <td>
                     <label for="">PHONE : </label>
                     <input type="text" placeholder="" value="+91">
-                    <input type="number">
+                    <input type="text" pattern="[6789][0-9]{9}" maxlength="10" title="Enter Your Phone No.">
                 </td>
             </tr>
             <tr>
@@ -78,19 +78,19 @@
             <tr>
                 <td>
                     <label for="">E-MAIL : </label>
-                    <input type="text">
+                    <input type="text" pattern="[a-z0-9]+@+[a-z]+.+[a-z]{2,3}$" required>
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="">PASSWORD : </label>
-                    <input type="password">
+                    <input type="password" pattern="[A-Z]+[a-zA-Z@0-9]{8,12}" title="please enter your password with the help of using @,a-z,A-Z,0-9" required>
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="">RE-TYPE PASSWORD : </label>
-                    <input type="password">
+                    <input type="password" pattern="[A-Z]+[a-zA-Z@0-9]{8,12}" title="Please Re-enter your password" required>
                 </td>
             </tr>
             <tr>

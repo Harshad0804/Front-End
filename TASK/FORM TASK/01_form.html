@@ -18,19 +18,19 @@
             <tr>
                 <th>
                     <label for="name">Enter your name</label>
-                    <input id="name" type="text" placeholder="your name" value="" title="Name data">
+                    <input id="name" type="text" placeholder="your name" value="" pattern="[a-zA-Z]{3,10}" title="Name data" required>
                 </th>
             </tr>
             <tr>
                 <th>
                     <label for="">Enter your surname</label>
-                    <input type="text" placeholder="your surname">
+                    <input type="text" placeholder="your surname" pattern="[a-zA-Z]{3,12}" required>
                 </th>
             </tr>
             <tr>
                 <th>
                     <label for="">Enter your Email</label>
-                    <input type="email" placeholder="your Email">
+                    <input type="email" placeholder="your Email" pattern="[a-z0-9]+@+[a-z]+.+[a-z]{2,3}$" >
                 </th>
             </tr>
             <tr>
