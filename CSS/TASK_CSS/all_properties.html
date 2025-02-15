@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            height: 350px;
+            width: 200px;
+            border: 2px solid;
+            margin: 200px auto;
+            position: relative;
+            box-shadow: 0 0 20px 10px rgb(179, 168, 168);;
+        }
+        .main .main2{
+            height: 185px;
+            width: 145px;
+            background-image: url(https://p.w3layouts.com/demos_new/template_demo/20-06-2017/elite_shoppy-demo_Free/1660570665/web/images/m7.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            margin: 20px auto;
+            transition: 1s;
+        }
+        .main .main3{
+            height: 20px;
+            width: 200px;
+            position: absolute;
+            top: 0%;
+            text-align: center;
+            background-color: black;
+            color: white;
+            transition: 1s;
+            opacity: 0;
+        }
+        .main .main4{
+            height: 23px;
+            width: 40px;
+            background: lightpink;
+            right: 0%;
+            top: 0%;
+            position: absolute;
+        }
+        .main .main5{
+            color: lightcoral;
+            text-align: center;
+            font-size: medium;
+        }
+        .main .main6{
+            text-align: center;
+            color: ;
+        }
+        .main .main7{
+            height: 30px;
+            width: 150px;
+            background-color: lightgreen;
+            position: absolute;
+            text-align: center;
+            margin: 20px 25px;
+            transition: .3s;
+        }
+        .main:hover .main2{
+            transform: rotateY(360deg);
+        }
+        .main:hover .main3{
+            top: 55%;
+            opacity: 1;
+        }
+        .main7:hover {
+            outline: 3px solid lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="main2"></div>
+        <div class="main3">QUICK VIEW</div>
+        <div class="main4">NEW</div>
+        <div class="main5">ANALOG WATCH</div>
+        <div class="main6">$160.99 <del>$290.71</del></div>
+        <div class="main7">ADD TO CART</div>
+    </div>
+</body>
+</html>
