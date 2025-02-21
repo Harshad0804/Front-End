@@ -1,0 +1,11 @@
+.main{
+    display: flex;
+    flex-wrap: wrap;
+}
+.main .nav1{
+    width: 25%;
+    background: black;
+    color: white;
+    text-align: center;
+    font-size: small;
+}
