@@ -1,0 +1,340 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Utility Class */
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* HEADER START */
+.header {
+    background-color: #3d5f00;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    /* margin-top: 10px; */
+}
+
+.lists .list {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.list .nav2 {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: "Roboto";
+    color: white;
+}
+
+.search {
+    color: white;
+    font-size: 24px;
+}
+
+.main-content {
+    background: url(/IMAGES/Header-img.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.data {
+    letter-spacing: 0px;
+    color: #3d5f00;
+    font-family: "Alegreya Sans";
+    padding: 120px 0;
+    transform: translateX(-40px);
+}
+
+.data .data1 {
+    font-size: 62px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.data .data2 {
+    font-size: 52px;
+    line-height: 156px;
+    font-weight: 500;
+}
+
+.data .line {
+    width: 30%;
+    /* margin: 10px 0; */
+}
+
+.data .para {
+    font-size: 21px;
+    font-weight: 400;
+    font-family: "Roboto";
+    width: 35%;
+    margin: 15px 0;
+}
+
+.data .box1 {
+    border-radius: 20px 0 20px 0;
+    background-color: #3d5f00;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+}
+
+.data .box2 {
+    border-radius: 15px 0 15px 0;
+    background-color: #3d5f00;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    margin: 0 20px;
+}
+
+/* HEADER END */
+
+/* SECTION START */
+
+.aboutus {
+    text-align: center;
+    font-family: "Roboto";
+    color: #3d5f00;
+    margin-top: 150px;
+    margin-bottom: 100px;
+}
+
+.aboutus .h3-header {
+    font-size: 50px;
+    font-weight: 700;
+    margin: 50px 0;
+}
+
+.aboutus .p-section {
+    font-size: 25px;
+    font-weight: 400;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.about-main .row {
+    display: flex;
+    margin: 40px 0;
+    gap: 50px;
+}
+
+.about-main .cols {
+    width: 50%;
+    /* border: 2px solid; */
+}
+
+.cols .about-content {
+    font-family: "Roboto";
+    color: #3d5f00;
+}
+
+.cols .h3-about {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.cols .para {
+    font-size: 25px;
+    font-weight: 400;
+    margin: 20px 0;
+    width: 85%;
+}
+
+.cols .para1 {
+    font-size: 25px;
+    font-weight: 400;
+    width: 85%;
+}
+
+.cols .btn-header {
+    border-radius: 20px 0 20px 0;
+    background-color: #3d5f00;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    margin-top: 20px;
+}
+
+.cols .btn-icon {
+    border-radius: 15px 0 15px 0;
+    background-color: #3d5f00;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    margin: 0 20px;
+}
+
+.abouts {
+    background: linear-gradient(rgba(143, 146, 59, 0.5), rgba(143, 146, 59, 0.5)), url(/IMAGES/section.png);
+    height: 500px;
+    width: 100%;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    position: relative;
+    background-size: 100% 100%;
+    z-index: 0;
+}
+
+.abouts .icony {
+    color: red;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 1;
+    font-size: 50px;
+}
+
+/* SECTION END */
+
+/* SERVICE SECTION START */
+
+.service-main {
+    text-align: center;
+    color: #3d5f00;
+    font-family: "Roboto";
+    margin: 120px 0;
+}
+
+.service-main .h3-service {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 45px;
+}
+
+.service-main .p-service {
+    font-size: 25px;
+    font-weight: 400;
+    width: 700px;
+    margin: 0 auto;
+}
+
+.service-card {
+    display: flex;
+    gap: 30px;
+    margin: 50px;
+}
+
+.service-card .service-side1 {
+    width: 60%;
+    /* border: 2px solid; */
+}
+
+.service-side1 .card-side {
+    display: flex;
+    justify-content: space-between;
+    font-size: 46px;
+    color: #3d5f00;
+    font-weight: 500;
+    font-family: "Roboto";
+}
+
+.service-side1 .p-cards {
+    margin: 30px 0;
+    font-size: 25px;
+    color: #3d5f00;
+    font-weight: 400;
+    font-family: "Roboto";
+}
+
+.service-side1 .btn-service {
+    border-radius: 15px 0 15px 0;
+    background-color: #3d5f00;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    margin-top: 20px;
+}
+
+.service-card .service-side2 {
+    width: 40%;
+}
+
+
+/* SERVICE SECTION END */
+
+/* SALE START */
+
+#sale {
+    background: url(/IMAGES/sale.png);
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+}
+
+.sale {
+    font-family: "Roboto";
+    color: #3d5f00;
+}
+
+.sale .h4-sale {
+    font-size: 33px;
+    font-weight: 500;
+    margin: 20px 0;
+    padding-top: 60px;
+}
+
+.sale .h2-sale {
+    font-size: 58px;
+    font-weight: 700;
+}
+
+.sale .h3-sale {
+    font-size: 33px;
+    letter-spacing: 14px;
+    font-weight: 500;
+}
+
+.sale .p-sale {
+    font-size: 25px;
+    font-weight: 400;
+    width: 50%;
+    margin: 40px 0;
+}
+
+.sale .btn-sale {
+    border-radius: 15px 0 15px 0;
+    background-color: #3d5f00;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    margin-bottom: 80px;
+}
+
+/* SALE END */
+
+/* PRICE START */
+
+.price-content {
+    text-align: center;
+    color: #3d5f00;
+    font-family: "Roboto";
+    margin: 80px 0;
+}
+
+.price-content .h2-price {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.price-content .p-price {
+    font-size: 25px;
+    font-weight: 400;
+    width: 50%;
+    margin: 0 auto;
+}
+
+/* PRICE START */

@@ -3,9 +3,21 @@
     flex-wrap: wrap;
 }
 .main .nav1{
+    height: 25px;
     width: 25%;
     background: black;
     color: white;
     text-align: center;
     font-size: small;
+}
+.main2{
+    height: 50px;
+    width: 100%;
+    position: relative;
+}
+.nav3{
+    background-image: url(./IMAGES/Screenshot\ 2025-02-20\ 235907.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
 }
