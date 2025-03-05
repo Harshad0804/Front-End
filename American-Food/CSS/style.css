@@ -337,4 +337,194 @@
     margin: 0 auto;
 }
 
+.price-cards {
+    display: flex;
+    gap: 45px;
+}
+
+.price-cards .price-card1 {
+    width: 33.33%;
+    /* border: 2px solid; */
+}
+
+.price-card1 .price-cardup {
+    background-color: #608b14;
+    text-align: center;
+    font-family: "Roboto";
+    color: #ffffff;
+    padding: 40px 0;
+}
+
+.price-cardup .price-h3 {
+    font-size: 42px;
+    font-weight: 400;
+}
+
+.price-cardup .price-h2 {
+    font-size: 58px;
+    font-weight: 700;
+}
+
+.price-card1 .price-carddown {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.price-carddown .price-p {
+    font-size: 29px;
+    font-weight: 400;
+    font-family: "Roboto";
+    color: #3d5f00;
+    margin: 10px 0;
+}
+
+.price-carddown .btn-price {
+    border-radius: 15px 0 15px 0;
+    background-color: #3d5f00;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    margin: 30px 0;
+}
+
+.price-cards .price-card2 {
+    width: 33.33%;
+    border: 2px solid;
+}
+
+.price-cards .price-card3 {
+    width: 33.33%;
+    border: 2px solid;
+}
+
 /* PRICE START */
+
+/* SPECIAL START */
+
+#special {
+    background-image: url(/IMAGES/special.png);
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+}
+
+.special {
+    margin: 60px 0;
+    font-family: "Roboto";
+    text-align: right;
+    color: #3d5f00;
+}
+
+.special .h4-special {
+    font-size: 33px;
+    font-weight: 500;
+    margin-top: 60px;
+    padding-top: 50px;
+}
+
+.special .h2-special {
+    font-size: 58px;
+    font-weight: 700;
+    margin-top: 30px;
+}
+
+.special .h3-special {
+    font-size: 33px;
+    letter-spacing: 14px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.special .p-special {
+    font-size: 25px;
+    font-weight: 400;
+    width: 40%;
+    transform: translateX(850px);
+}
+
+.special .btn-special {
+    border-radius: 15px 0 15px 0;
+    background-color: #3d5f00;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    margin: 80px 0;
+}
+
+/* SPECIAL END */
+
+/* BLOG START */
+
+.blog {
+    font-family: "Roboto";
+    text-align: center;
+    color: #3d5f00;
+    margin: 50px 0;
+}
+
+.blog .h2-blog {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.blog .p-blog {
+    font-size: 25px;
+    font-weight: 400;
+    width: 60%;
+    padding: 30px 0;
+    margin: 0 auto;
+}
+
+/* BLOG END */
+
+/* LAST START */
+
+#last .last-section {}
+
+.last-section .last {
+    /* width: 33.33%; */
+    display: flex;
+    gap: 50px;
+}
+
+.last .last1 {
+    width: 33.33%;
+}
+
+.last .last2 {
+    width: 33.33%;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+
+.last2 .h3-last {
+    font-size: 33px;
+    color: #3d5f00;
+    font-weight: 500;
+    font-family: "Roboto";
+    margin-top: 30px;
+}
+
+.last2 .btn-last {
+    border-radius: 15px 0 15px 0;
+    background-color: #3d5f00;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    margin: 30px 0;
+}
+
+.last2 .p-last {
+    font-size: 25px;
+    color: #3d5f00;
+    font-weight: 400;
+    font-family: "Roboto";
+    margin: 40px 0;
+}
+
+.last .last3 {
+    width: 33.33%;
+}
+
+
+/* LAST END */
