@@ -528,3 +528,68 @@
 
 
 /* LAST END */
+
+/* FOOTER START */
+
+#Footer {
+    margin-top: 80px;
+    padding: 50px 0;
+    background-color: #3d5f00;
+}
+
+#Footer .row {
+    display: flex;
+}
+
+#Footer .row .col-4 {
+    width: 40%;
+}
+
+#Footer .row .col-6 {
+    width: 60%;
+}
+
+.col-6 .row .col {
+    width: 33.33%;
+}
+
+.footer .h2-footer {
+    font-size: clamp(18px, 3vw, 31px);
+    color: #ffffff;
+    font-weight: 700;
+    font-family: "Nunito";
+}
+
+.footer .ul-footer {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.ul-footer .li-footer {
+    margin: 10px 0;
+}
+
+.ul-footer .li-footer .a-footer {
+    text-decoration: none;
+    color: white;
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 400;
+    font-family: "Nunito";
+}
+
+.footer .p-footer {
+
+    font-size: clamp(18px, 3vw, 24px);
+    color: #ffffff;
+    width: 80%;
+    margin:  20px 0;
+    font-weight: 400;
+    font-family: "Nunito";
+}
+.footer-icon i{
+    font-size: clamp(18px, 3vw, 24px);
+    color: white;
+    margin: 0 5px;
+}
+
+/* FOOTER END */
