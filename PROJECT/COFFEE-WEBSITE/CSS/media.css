@@ -7,41 +7,327 @@
     
 }
 
-@media only screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
+    /* General container adjustments */
+    .container {
+        width: 95%;
+    }
+
     
 
-    #navbar .header{
+    /* HEADER SECTION */
+
+    #navbar .header {
         background-size: 100% 100%;
         background-repeat: no-repeat;
     }
 
-    .
-
-    .main-content .h1-main {
-        width: 60%;
-        margin: 30px 0;
+    .navbar {
+        flex-direction: column;
+        margin-left: -11px;
+        width: 105.4% ;
+        height: 80px;
+        background-color: #122341;
     }
 
-    .list .a-nav {
+    .navbar .bar{
+        display: block;
+        /* font-size: 20px; */
+        margin-left: 80%;
+        margin-top: 7%;
+        color:white;
+        /* background-color: aqua; */
+    }
+
+    .navbar .nav {
         display: none;
     }
 
+    .navbar .nav {
+        width: 100%;
+        order: 2;
+    }
+
+    .navbar .logo {
+        width: 50%;
+        margin: 10px 0;
+        order: 1;
+        justify-content: left;
+        /* background-color: black ; */
+        margin-left: -200px;
+        margin-top: -30px;
+    }
+
+    .navbar .nav-logo {
+        width: 20%;
+    }
+
+    .navbar .nav-logo2 {
+        width: 60%;
+    }
+
+    .nav-1 {
+        text-align: center;
+    }
+
+    .nav-1 .list {
+        margin: 15px 8px;
+    }
+
+    .list .a-nav {
+        /* font-size: 16px; */
+    }
+
+    .main-content {
+        text-align: center;
+    }
+
+
+    .main-content .h4-main {
+        /* font-size: 22px; */
+        margin: 20px 0;
+    }
+
+    .main-content .p-main {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .main-content .btn-main {
+        /* font-size: 22px; */
+        padding: 10px 20px;
+    }
+
+    /* COFFEE SECTIONS */
+    .section .sections {
+        flex-direction: column;
+    }
+
+    .sections .sec-1,
+    .sections .sec-2,
+    .sections .sec-3,
+    .sections .sec-4,
+    .sections .sec-5 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .sec-1 .h1-sec,
+    .sec-1 .sec-h1,
+    .sec-5 .h1-sec5,
+    .sec-5 .sec5-h1 {
+        /* font-size: 70px; */
+        margin-top: 40px;
+    }
+
+    .sec-1 .btn-sec,
+    .sec-5 .btn-sec5 {
+        /* font-size: 22px; */
+        padding: 10px 20px;
+        margin: 40px 0;
+    }
+
+    .sec-2 {
+        margin: 20px 0 !important;
+    }
+
+    .sec-2 .img-cup1 {
+        width: 70%;
+        margin: 20px auto;
+    }
+
+    .sec-3 .p-sec,
+    .sec-4 .p-sec {
+        /* font-size: 16px; */
+        width: 90%;
+        margin: 30px auto;
+        text-align: center;
+    }
+
+    /* GIFT VOUCHER */
+    .voucher .vouchers {
+        flex-direction: column;
+    }
+
+    .vouchers .side1,
+    .vouchers .side2 {
+        width: 100%;
+    }
+
+    .side1 .box-side1 {
+        width: 80%;
+        margin: 10% auto;
+        padding: 30px;
+    }
+
+    .box-side1 .logo-side1 {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .box-side1 .h2-side1 {
+        /* font-size: 80px; */
+        padding: 20px;
+    }
+
+    .side1 .leaf {
+        display: none;
+    }
+
+    .side2 .h1-side2 {
+        /* font-size: 60px; */
+        margin: 30px 0;
+    }
+
+    .side2 .p1-side2 {
+        /* font-size: 30px; */
+        width: 90%;
+    }
+
+    .side2 .p2-side2 {
+        width: 90%;
+        padding-top: 30px;
+    }
+
+    /* ABOUT SECTION */
+    .about .h1-about {
+        /* font-size: 60px; */
+        margin: 50px 0;
+    }
+
+    .about .p-about {
+        /* font-size: 16px; */
+        margin: 30px 0;
+    }
+
+    /* CUSTOMER SECTION */
+    .customer-head .h1-customer {
+        /* font-size: 60px; */
+        margin: 40px 0;
+    }
+
+    .customer .box {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .box .box1{
+        width: 100%;
+        /* margin-left: 10px;
+        justify-content: center; */
+    }
+
+    .box .box2 {
+        width: 100%;
+        margin: 0;
+    }
+
+    .box2 .h3-box2,
+    .box2 .h3-box-2 {
+        /* font-size: 40px; */
+        margin-top: 30px;
+    }
+
+    .box2 .p1-box2,
+    .box2 .p2-box2 {
+        /* font-size: 18px; */
+        width: 90%;
+        margin: 20px;
+    }
+
+    /* WE ARE OPEN SECTION */
+    .open {
+        margin: 60px 0;
+    }
+
+    .open-content .h1-open {
+        /* font-size: 60px; */
+        margin: 40px 0;
+    }
+
+    .open-content .box1,
+    .open-content .box2 {
+        width: 95%;
+    }
+
+    .box1 .h4-open1,
+    .box1 .h4-open2,
+    .box2 .h4-open1,
+    .box2 .h4-open2 {
+        /* font-size: 30px; */
+        margin: 20px 0;
+        padding: 15px 0;
+    }
+
+    /* OUR BRANCHES SECTION */
+    .our-content .h1-our {
+        /* font-size: 60px; */
+    }
+
+    .our-content .cards {
+        flex-direction: column;
+        gap: 40px;
+        margin: 40px 0;
+    }
+
+    .cards .card {
+        width: 100%;
+    }
+
+    .card .batch {
+        width: 70%;
+        margin-left: 65px;
+        text-align: center;
+        /* transform: translateX(-20px); */
+    }
+
+    /* FOOTER SECTION */
+    .footer .last {
+        flex-direction: column;
+    }
+
+    .last,
+    .last .last2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .last .last1 {
+        display: none;
+    }
+
+    .last1 .logo1,
+    .last1 .logo2 {
+        width: auto;
+        margin: 20px;
+    }
+
+    .last1 .logo1 img,
+    .last1 .logo2 img {
+        width: 70%;
+    }
+
+    .last2 .h2footer {
+        /* font-size: 28px; */
+        margin: 30px 0 20px;
+    }
+
+    .last2 .p1,
+    .last2 .p2,
+    .last2 .p3,
+    .last2 .p4,
+    .last2 .p5 {
+        /* font-size: 18px; */
+        margin: 10px 0;
+    }
+
+    .last2 .logos i {
+        margin: 30px 0;
+        /* font-size: 24px; */
+        padding-right: 30px;
+    }
 }
 
 @media only screen and (max-width:576px) {
-    #navbar .header{
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-    }
-
-    .
-
-    .main-content .h1-main {
-        width: 60%;
-        margin: 30px 0;
-    }
-
-    .list .a-nav {
-        display: none;
-    }
+    
 }

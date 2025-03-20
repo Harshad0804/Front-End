@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            height: 600px;
+            width: 100%;
+        }
+        button{
+            background-color: red;
+            color: wheat;
+            margin-top: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <img src="/Images/IMG-1.jpeg" height="100%" width="100%" id="img" alt="">
+    </div>
+    <button onclick="silder()">Change img</button>
+
+
+    <script>
+        function silder(){
+            let img_tag = document.getElementById("img")
+
+            console.log(img_tag.src)
+
+            if(img_tag.src.match("/Images/IMG-1.jpeg")){
+                img_tag.src = "/Images/IMG-2.jpeg"
+            }
+            else if(img_tag.src.match("/Images/IMG-2.jpeg")){
+                img_tag.src = "/Images/IMG-3.jpeg"
+            }
+            else if(img_tag.src.match("/Images/IMG-3.jpeg")){
+                img_tag.src = "/Images/IMG-4.jpeg"
+            }
+            else{
+                img_tag.src = "/Images/IMG-1.jpeg"
+            }
+        }
+        // silder()
+    </script>
+</body>
+</html>

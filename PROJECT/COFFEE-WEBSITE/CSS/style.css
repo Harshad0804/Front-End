@@ -28,6 +28,10 @@
     /* border: 2px solid; */
 }
 
+.navbar .bar{
+    display: none;
+}
+
 .nav-1 .list {
     display: inline-block;
     margin: 140px 30px;
@@ -37,25 +41,33 @@
 
 .list .a-nav {
     text-decoration: none;
-    clamp:(18px, 3.2vw, 25px);
+    font-size: clamp(18px, 3.2vw, 25px);
     letter-spacing: 1px;
-    /* line-height: 61px; */
     color: #000b2c;
     font-weight: bold;
     font-family: "Myriad Pro";
-    /* text-align: center; */
+}
+
+.navbar .logo{
+    /* border: 2px solid; */
+    margin-left: 8%;
+    width: 20%;
+    display: flex;
+    gap: 2px;
+
 }
 
 .navbar .nav-logo {
-    width: 15%;
+    width: 10%;
     /* border: 2px solid; */
     margin: 0 auto;
-    transform: translateX(150px);
+    /* transform: translateX(150px); */
 }
 
 .navbar .nav-logo2 {
-    width: 15%;
+    width: 60%;
     /* border: 2px solid; */
+    margin-top: 10px;
 }
 
 .main-content {
@@ -63,7 +75,7 @@
 }
 
 .main-content .h1-main {
-    clamp:(130px, 8vw, 153px);
+    font-size: clamp(80px, 7vw , 153px);
     letter-spacing: 6px;
     color: #000b2c;
     font-weight: 500;
@@ -73,7 +85,7 @@
 }
 
 .main-content .h4-main {
-    font-size: 33px;
+    font-size: clamp(22px, 3vw , 33px);
     letter-spacing: 2px;
     color: #ff4b00;
     font-family: "Myriad Pro";
@@ -82,7 +94,7 @@
 
 .main-content .p-main {
     width: 30%;
-    font-size: 15px;
+    font-size: clamp(10px, 3vw , 15px);
     letter-spacing: 1px;
     color: #122341;
     font-weight: 300;
@@ -91,7 +103,7 @@
 }
 
 .main-content .btn-main {
-    font-size: 33px;
+    font-size: clamp(22px, 4vw , 33px);
     letter-spacing: 2px;
     color: #ffffff;
     font-weight: 500;
@@ -119,9 +131,9 @@
 }
 
 .sec-1 .h1-sec {
-    font-size: 125px;
+    font-size: clamp(70px, 7vw , 125px);
     letter-spacing: 5px;
-    line-height: 113px;
+    /* line-height: 113px; */
     color: #ffffff;
     font-weight: 700;
     font-style: italic;
@@ -130,9 +142,9 @@
 }
 
 .sec-1 .sec-h1 {
-    font-size: 125px;
+    font-size: clamp(70px, 7vw , 125px);
     letter-spacing: 5px;
-    line-height: 113px;
+    /* line-height: 113px; */
     color: #ffffff;
     font-weight: 700;
     font-style: italic;
@@ -140,7 +152,7 @@
 }
 
 .sec-1 .btn-sec {
-    font-size: 33px;
+    font-size: clamp(22px, 7vw , 33px);
     letter-spacing: 2px;
     color: #ffffff;
     font-weight: 500;
@@ -165,13 +177,14 @@
 }
 
 .sec-3 .p-sec {
-    font-size: 19px;
-    letter-spacing: 1px;
-    line-height: 32px;
+    font-size: clamp(16px, 3vw , 19px);
+    letter-spacing: 2px;
+    width: 80%;
+    /* line-height: 32px; */
     color: #ffffff;
     font-family: "Myriad Pro";
     text-align: right;
-    margin: 150px 0;
+    margin: 190px 100px;
 }
 
 #section2 {
@@ -179,21 +192,22 @@
 }
 
 .sec-4 .p-sec {
-    font-size: 19px;
+    font-size: clamp(16px, 3vw , 19px);
     letter-spacing: 1px;
-    line-height: 32px;
+    width: 80%;
+    /* line-height: 32px; */
     color: #00194b;
     font-family: "Myriad Pro";
     text-align: left;
-    margin: 150px 0;
+    margin: 190px 1px;
 }
 
 .sec-5 {}
 
 .sec-5 .h1-sec5 {
-    font-size: 125px;
+    font-size: clamp(70px, 7vw , 125px);
     letter-spacing: 5px;
-    line-height: 113px;
+    /* line-height: 113px; */
     color: #00194b;
     font-weight: 700;
     font-style: italic;
@@ -202,9 +216,9 @@
 }
 
 .sec-5 .sec5-h1 {
-    font-size: 125px;
+    font-size: clamp(70px, 7vw , 125px);
     letter-spacing: 5px;
-    line-height: 113px;
+    /* line-height: 113px; */
     color: #00194b;
     font-weight: 700;
     font-style: italic;
@@ -213,7 +227,7 @@
 }
 
 .sec-5 .btn-sec5 {
-    font-size: 33px;
+    font-size: clamp(22px, 5vw , 33px);
     letter-spacing: 2px;
     color: #ffffff;
     font-weight: 500;
@@ -258,7 +272,8 @@
     border-radius: 100%;
     background-color: #122341;
     border: 9px solid #ff4a00;
-    transform: translateX(-50px);
+    margin-left: 6%;
+    /* transform: translateX(-50px); */
 }
 
 .side1 .leaf {
@@ -272,7 +287,7 @@
 }
 
 .box-side1 .h2-side1 {
-    font-size: 120px;
+    font-size: clamp(70px, 7vw , 120px);
     letter-spacing: 5px;
     color: #ffffff;
     font-family: "Myriad Pro";
@@ -288,7 +303,7 @@
 }
 
 .side2 .h1-side2 {
-    font-size: 100px;
+    font-size: clamp(60px, 7vw , 120px);
     letter-spacing: 4px;
     font-weight: 500;
     font-style: italic;
@@ -297,7 +312,7 @@
 }
 
 .side2 .p1-side2 {
-    font-size: 50px;
+    font-size: clamp(30px, 5vw , 50px);
     letter-spacing: 2px;
     font-weight: 700;
     font-family: "Roboto";
@@ -310,7 +325,7 @@
 
 .side2 .p2-side2 {
     width: 60%;
-    font-size: 17px;
+    font-size: clamp(10px, 4vw , 17px);
     letter-spacing: 1px;
     font-family: "Myriad Pro";
     margin: 0 auto;
@@ -324,7 +339,7 @@
 #about {}
 
 .about .h1-about {
-    font-size: 88px;
+    font-size: clamp(60px, 4vw , 88px);
     letter-spacing: 4px;
     color: #122341;
     font-weight: 700;
@@ -334,7 +349,7 @@
 }
 
 .about .p-about {
-    font-size: 21px;
+    font-size: clamp(16px, 3vw , 21px);
     letter-spacing: 1px;
     color: #122341;
     font-family: "Myriad Pro";
@@ -351,7 +366,7 @@
 }
 
 .customer-head .h1-customer {
-    font-size: 88px;
+    font-size: clamp(60px, 7vw , 88px);
     letter-spacing: 4px;
     color: #000b2c;
     font-weight: 700;
@@ -372,18 +387,22 @@
 .box .box1 {
     width: 50%;
     padding: 30px 30px;
-    transform: translateX(30px);
+    margin-left: 2%;
+    /* transform: translateX(30px); */
 }
 
-.box1 .img {}
+.box1 .img {
+    background-size: 100% 100%;
+}
 
 .box .box2 {
     width: 50%;
-    transform: translateX(-60px);
+    margin-right: 5%;
+    /* transform: translateX(-60px); */
 }
 
 .box2 .h3-box2 {
-    font-size: 50px;
+    font-size: clamp(40px, 3vw , 50px);
     letter-spacing: 2px;
     color: #ffffff;
     font-weight: 700;
@@ -393,7 +412,7 @@
 }
 
 .box2 .p1-box2 {
-    font-size: 25px;
+    font-size: clamp(18px, 3vw , 25px);
     letter-spacing: 1px;
     color: #ffffff;
     font-weight: 300;
@@ -404,7 +423,7 @@
 }
 
 .box2 .h3-box-2 {
-    font-size: 50px;
+    font-size: clamp(40px, 3vw , 50px);
     letter-spacing: 2px;
     color: #ffffff;
     font-weight: 700;
@@ -414,7 +433,7 @@
 }
 
 .box2 .p2-box2 {
-    font-size: 25px;
+    font-size: clamp(18px, 3vw , 25px);
     letter-spacing: 1px;
     color: #ffffff;
     font-weight: 300;
@@ -434,7 +453,7 @@
 }
 
 .open-content .h1-open {
-    font-size: 88px;
+    font-size: clamp(60px, 5vw , 88px);
     letter-spacing: 4px;
     color: #122341;
     font-weight: 700;
@@ -451,7 +470,7 @@
 }
 
 .box1 .h4-open1 {
-    font-size: 50px;
+    font-size: clamp(30px, 5vw , 50px);
     letter-spacing: 2px;
     color: #ffffff;
     font-family: "Myriad Pro";
@@ -461,7 +480,7 @@
 }
 
 .box1 .h4-open2 {
-    font-size: 50px;
+    font-size: clamp(30px, 5vw , 50px);
     letter-spacing: 2px;
     color: #ffffff;
     font-family: "Myriad Pro";
@@ -478,7 +497,7 @@
 }
 
 .box2 .h4-open1 {
-    font-size: 50px;
+    font-size: clamp(30px, 5vw , 50px);
     letter-spacing: 2px;
     color: #ffffff;
     font-family: "Myriad Pro";
@@ -488,7 +507,7 @@
 }
 
 .box2 .h4-open2 {
-    font-size: 50px;
+    font-size: clamp(30px, 5vw , 50px);
     letter-spacing: 2px;
     color: #ffffff;
     font-family: "Myriad Pro";
@@ -506,7 +525,7 @@
 .branches .our-content {}
 
 .our-content .h1-our {
-    font-size: 88px;
+    font-size: clamp(60px, 5vw , 88px);
     letter-spacing: 4px;
     color: #122341;
     font-weight: 700;
@@ -535,11 +554,11 @@
     width: 60%;
     border-radius: 15px;
     background-color: #ff4a00;
-    transform: translateX(-30px);
+    margin-left: -10%;
 }
 
 .batch .h3-our {
-    font-size: 33px;
+    font-size: clamp(20px, 5vw , 33px);
     letter-spacing: 2px;
     color: #ffffff;
     font-weight: 500;
@@ -554,7 +573,7 @@
 }
 
 .para .content {
-    font-size: 15px;
+    font-size: clamp(8px, 3vw , 15px);
     letter-spacing: 1px;
     word-spacing: 3px;
     color: #ffffff;
@@ -586,6 +605,7 @@
 
 .footer .last {
     display: flex;
+    gap: 30px;
 }
 
 .last .last1 {
@@ -604,8 +624,8 @@
 .last2 .logos i{
     color: #ffffff;
     margin: 50px 0px;
-    font-size: 30px;
-    padding-right: 30px;
+    font-size: clamp(24px, 4vw , 35px);
+    padding-right: 25px;
 }
 
 .last .last2 {
@@ -613,7 +633,7 @@
 }
 
 .last2 .h2footer {
-    font-size: 33px;
+    font-size: clamp(28px, 2vw , 33px);
     letter-spacing: 1px;
     color: #ffffff;
     font-weight: bold;
@@ -622,7 +642,7 @@
 }
 
 .last2 .p1 {
-    font-size: 22px;
+    font-size: clamp(18px, 2vw , 22px);
     letter-spacing: 1px;
     color: #ffffff;
     font-family: "Myriad Pro";
@@ -630,14 +650,14 @@
 }
 
 .last2 .p2 {
-    font-size: 22px;
+    font-size: clamp(18px, 2vw , 22px);
     letter-spacing: 1px;
     color: #ffffff;
     font-family: "Myriad Pro";
 }
 
 .last2 .p3 {
-    font-size: 22px;
+    font-size: clamp(18px, 2vw , 22px);
     letter-spacing: 1px;
     color: #ffffff;
     font-family: "Myriad Pro";
@@ -645,14 +665,14 @@
 }
 
 .last2 .p4 {
-    font-size: 22px;
+    font-size: clamp(18px, 2vw , 22px);
     letter-spacing: 1px;
     color: #ffffff;
     font-family: "Myriad Pro";
 }
 
 .last2 .p5 {
-    font-size: 22px;
+    font-size: clamp(18px, 2vw , 22px);
     letter-spacing: 1px;
     color: #ffffff;
     font-family: "Myriad Pro";
