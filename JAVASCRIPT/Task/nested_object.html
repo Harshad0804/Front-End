@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let userdata = {
+            name : "Harshad" ,
+            surname : "Karguwal" ,
+            course : "Full-Stack" ,
+            newoneadd : {
+                state : "Gujarat" ,
+                country : "INDIA",
+            }
+            
+        }
+
+        for (let data in userdata){
+                console.log(userdata[data]);
+                document.write(data ,"-->",userdata[data], "<br>")
+                for (let newoneadd in userdata){
+                    document.write(newdata, "--", userdata[newoneadd], "<br>")
+                }
+            }
+
+    </script>
+</body>
+</html>
