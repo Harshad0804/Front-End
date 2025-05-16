@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Restaurant Booking Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: #f0f8ff;
+            min-height: 100vh;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        form {
+            max-width: 400px;
+            width: 100%;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 0.5rem 0 0.25rem;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>RESTAURANT BOOKING !</h2>
+    <form id="bookingForm">
+        <label for="choice">Choice of Booking</label>
+        <select id="choice" required>
+            <option value="">Select booking type</option>
+            <option value="full-day">Full day booking</option>
+            <option value="half-day">Half day booking</option>
+            <option value="hourly">Hourly booking</option>
+        </select>
+
+        <label for="username">User Name</label>
+        <input type="text" id="username" required placeholder="Your name" />
+
+        <label for="mobile">Mobile Number</label>
+        <input type="tel" id="mobile" required placeholder="10 digit mobile number" pattern="{10}"
+            title="Enter 10 digits only" />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required placeholder="Your email" />
+
+        <label for="persons">Number of Persons</label>
+        <input type="number" id="persons" required min="1" max="20" value="1" />
+
+        <label for="date" class="hidden">Date</label>
+        <input type="date" id="date" class="hidden" required />
+
+        <label for="time" class="hidden">Time</label>
+        <input type="time" id="time" class="hidden" />
+
+        <label for="slot" class="hidden">Slot</label>
+        <select id="slot" class="hidden">
+            <option value="">Select slot</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+        </select>
+
+        <button type="submit">Book Now</button>
+    </form>
+
+    <script>
+        document.getElementById('choice').addEventListener('change', function () {
+            const dateInput = document.getElementById('date');
+            const dateLabel = dateInput.previousElementSibling;
+            const timeInput = document.getElementById('time');
+            const timeLabel = timeInput.previousElementSibling;
+            const slotSelect = document.getElementById('slot');
+            const slotLabel = slotSelect.previousElementSibling;
+            const choice = this.value;
+
+            if (choice === 'full-day') {
+                dateInput.classList.remove('hidden');
+                dateLabel.classList.remove('hidden');
+                timeInput.classList.add('hidden');
+                timeLabel.classList.add('hidden');
+                slotSelect.classList.add('hidden');
+                slotLabel.classList.add('hidden');
+                dateInput.required = true;
+                timeInput.required = false;
+                slotSelect.required = false;
+
+            } else if (choice === 'half-day') {
+                dateInput.classList.remove('hidden');
+                dateLabel.classList.remove('hidden');
+                timeInput.classList.add('hidden');
+                timeLabel.classList.add('hidden');
+                slotSelect.classList.remove('hidden');
+                slotLabel.classList.remove('hidden');
+                dateInput.required = true;
+                timeInput.required = false;
+                slotSelect.required = true;
+
+            } else if (choice === 'hourly') {
+                dateInput.classList.remove('hidden');
+                dateLabel.classList.remove('hidden');
+                timeInput.classList.remove('hidden');
+                timeLabel.classList.remove('hidden');
+                slotSelect.classList.add('hidden');
+                slotLabel.classList.add('hidden');
+                dateInput.required = true;
+                timeInput.required = true;
+                slotSelect.required = false;
+
+            } else {
+                dateInput.classList.add('hidden');
+                dateLabel.classList.add('hidden');
+                timeInput.classList.add('hidden');
+                timeLabel.classList.add('hidden');
+                slotSelect.classList.add('hidden');
+                slotLabel.classList.add('hidden');
+                dateInput.required = false;
+                timeInput.required = false;
+                slotSelect.required = false;
+            }
+        });
+
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (!this.checkValidity()) {
+                this.reportValidity();
+                return;
+            }
+
+            const bookingDetails = {
+                choice: document.getElementById('choice').value,
+                name: document.getElementById('username').value,
+                mobile: document.getElementById('mobile').value,
+                email: document.getElementById('email').value,
+                persons: document.getElementById('persons').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value || 'N/A',
+                slot: document.getElementById('slot').value || 'N/A'
+            };
+
+            alert(
+                `Booking Details:\n` +
+                `Choice of Booking: ${bookingDetails.choice}\n` +
+                `User Name: ${bookingDetails.name}\n` +
+                `Mobile Number: ${bookingDetails.mobile}\n` +
+                `Email: ${bookingDetails.email}\n` +
+                `Number of Persons: ${bookingDetails.persons}\n` +
+                `Date: ${bookingDetails.date}\n` +
+                `Time: ${bookingDetails.time}\n` +
+                `Slot: ${bookingDetails.slot}`
+            );
+
+            this.reset();
+
+            ['date', 'time', 'slot'].forEach(id => {
+                const elem = document.getElementById(id);
+                const label = elem.previousElementSibling;
+                elem.classList.add('hidden');
+                label.classList.add('hidden');
+                elem.required = false;
+            });
+        });
+    </script>
+</body>
+
+</html>
