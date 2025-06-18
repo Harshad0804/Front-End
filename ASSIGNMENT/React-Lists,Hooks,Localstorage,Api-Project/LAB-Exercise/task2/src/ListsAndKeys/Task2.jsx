@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react'
 
-const Task2 = () => {
-  const [count, setCount] = useState(0);
+const users = [
+    { id: 1, name: 'Alice Johnson' },
+    { id: 2, name: 'Bob Smith' },
+    { id: 3, name: 'Charlie Davis' },
+    { id: 4, name: 'Diana Lee' },
+    { id: 5, name: 'Ethan Wright' }
+  ];
 
-  const handleIncrement = () => {
-    setCount(Count => Count + 1);
-  };
-
+function Task2() {
   return (
-    <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-      <h1 className='display-2 fw-bold mt-3'>Count: {count}</h1>
-      <button className='btn btn-primary mt-3' onClick={handleIncrement} style={{ padding: '10px 20px', fontSize: '16px' }}>
-        Increment
-      </button>
+    <div>
+       <h2>User List</h2>
+            <ul>
+                {users.map(user => (
+                    <li key={user.id}>
+                        {user.name}
+                    </li>
+                ))}
+            </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Task2;
+export default Task2

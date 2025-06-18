@@ -1,24 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const users = [
-    { id: 1, name: 'Alice Johnson' },
-    { id: 2, name: 'Bob Smith' },
-    { id: 3, name: 'Charlie Davis' },
-    { id: 4, name: 'Diana Lee' },
-    { id: 5, name: 'Ethan Wright' }
-  ];
+const Hook2 = () => {
+     const [data, setdata] = useState([]);
+  useEffect(() => {
+    fetchdata();
+  }, []);
 
-function Hook2() {
+  const fetchdata = async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const result = await res.json();
+    setdata(result);
+  };
     return (
         <div>
-            <h2>User List</h2>
-            <ul>
-                {users.map(user => (
-                    <li key={user.id}>
-                        {user.name}
-                    </li>
-                ))}
-            </ul>
+           <h1>Hook 2 : Fetching Data form API</h1>
+      <ul className="list-group">
+        {data.map((user, index) => {
+          return (
+            <li key={index} className="list-group-item">
+              <span className="fw-bold">Name :</span> {user.name} -{" "}
+              <span className="fw-bold">Email :</span> {user.email} -{" "}
+              <span className="fw-bold">Phone :</span> {user.phone}
+            </li>
+          );
+        })}
+      </ul>
         </div>
     )
 }
