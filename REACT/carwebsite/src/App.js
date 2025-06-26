@@ -12,6 +12,9 @@ import Testimonial from './Cental/Pages/Testimonial'
 import Error from './Cental/Pages/Error'
 import Dashboard from './Admin/Adminpages/Dashboard'
 import Blogmanager from './Admin/Adminpages/Blogmanager'
+import Addblog from './Admin/Adminpages/Addblog'
+import Addcar from './Admin/Adminpages/Addcar'
+import Addteam from './Admin/Adminpages/Addteam'
 // import Adminnavbar from './Admin/Admincommon/Adminnavbar'
 // import Adminheader from './Admin/Admincommon/Adminheader'
 
@@ -39,8 +42,9 @@ function App() {
 
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/Blogmanager" element={<Blogmanager />} />
-            {/* <Route path="/adminnavbar" element={<Adminnavbar />} /> */}
-            {/* <Route path="/adminheader" element={<Adminheader />} /> */}
+            <Route path="/Addblog" element={<Addblog />} />
+            <Route path="/addcar" element={<Addcar />} />
+            <Route path="/addteam" element={<Addteam />} />
 
           </Routes>
         </div>

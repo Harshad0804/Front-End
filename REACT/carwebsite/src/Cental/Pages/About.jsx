@@ -1,15 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Common/Navbar'
 import Footer from '../Common/Footer'
 import Header from '../Common/Header'
+import axios from 'axios'
+import { data } from 'react-router-dom'
 
 function About() {
+
+    const [person, setperson] = useState([])
+
+    useEffect(() => {
+        fetchdata()
+    }, [])
+
+    const fetchdata = async () => {
+        const res = await axios.get("http://localhost:3000/customer")
+        console.log(res.data)
+        setperson(res.data)
+    }
+
     return (
         <div>
             <Navbar />
-            <Header title="About Us" name="About"/>
+            <Header title="About Us" name="About" />
             <div>
-                
+
                 {/* About Start */}
                 <div className="container-fluid overflow-hidden about py-5">
                     <div className="container py-5">
@@ -254,74 +269,30 @@ function About() {
                             </p>
                         </div>
                         <div className="row g-4">
-                            <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
-                                <div className="team-item p-4 pt-0">
-                                    <div className="team-img">
-                                        <img src="img/team-1.jpg" className="img-fluid rounded w-100" alt="Image" />
-                                    </div>
-                                    <div className="team-content pt-4">
-                                        <h4>MARTIN DOE</h4>
-                                        <p>Profession</p>
-                                        <div className="team-icon d-flex justify-content-center">
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-facebook-f" /></a>
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-twitter" /></a>
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-instagram" /></a>
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-linkedin-in" /></a>
+                            {
+                                person && person.map((data) => {
+                                    console.log(data)
+                                    return (
+                                        <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                                            <div className="team-item p-4 pt-0">
+                                                <div className="team-img">
+                                                    <img src={data.img} className="img-fluid rounded w-100" alt="Image" />
+                                                </div>
+                                                <div className="team-content pt-4">
+                                                    <h4>{data.name}</h4>
+                                                    <p>{data.title}</p>
+                                                    <div className="team-icon d-flex justify-content-center">
+                                                        <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-facebook-f" /></a>
+                                                        <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-twitter" /></a>
+                                                        <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-instagram" /></a>
+                                                        <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-linkedin-in" /></a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                                <div className="team-item p-4 pt-0">
-                                    <div className="team-img">
-                                        <img src="img/team-2.jpg" className="img-fluid rounded w-100" alt="Image" />
-                                    </div>
-                                    <div className="team-content pt-4">
-                                        <h4>MARTIN DOE</h4>
-                                        <p>Profession</p>
-                                        <div className="team-icon d-flex justify-content-center">
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-facebook-f" /></a>
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-twitter" /></a>
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-instagram" /></a>
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-linkedin-in" /></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
-                                <div className="team-item p-4 pt-0">
-                                    <div className="team-img">
-                                        <img src="img/team-3.jpg" className="img-fluid rounded w-100" alt="Image" />
-                                    </div>
-                                    <div className="team-content pt-4">
-                                        <h4>MARTIN DOE</h4>
-                                        <p>Profession</p>
-                                        <div className="team-icon d-flex justify-content-center">
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-facebook-f" /></a>
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-twitter" /></a>
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-instagram" /></a>
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-linkedin-in" /></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                                <div className="team-item p-4 pt-0">
-                                    <div className="team-img">
-                                        <img src="img/team-4.jpg" className="img-fluid rounded w-100" alt="Image" />
-                                    </div>
-                                    <div className="team-content pt-4">
-                                        <h4>MARTIN DOE</h4>
-                                        <p>Profession</p>
-                                        <div className="team-icon d-flex justify-content-center">
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-facebook-f" /></a>
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-twitter" /></a>
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-instagram" /></a>
-                                            <a className="btn btn-square btn-light rounded-circle mx-1" href><i className="fab fa-linkedin-in" /></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 </div>
@@ -345,7 +316,7 @@ function About() {
                 </div>
                 {/* Banner End */}
             </div>
-<Footer />
+            <Footer />
         </div>
     )
 }

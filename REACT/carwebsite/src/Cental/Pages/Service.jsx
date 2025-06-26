@@ -1,14 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../Common/Footer'
 import Navbar from '../Common/Navbar'
 import Header from '../Common/Header'
+import axios from 'axios'
 
 function Service() {
-  return (
-    <div>
-        <Navbar />
-        <Header title="Our Services" name="Service"/>
-      <div>
+
+    const [service, setservice] = useState([])
+
+    useEffect(() => {
+        fetchdata()
+    }, [])
+
+    const fetchdata = async () => {
+        const res = await axios.get("http://localhost:3000/services")
+        console.log(res.data)
+        setservice(res.data)
+    }
+
+    return (
+        <div>
+            <Navbar />
+            <Header title="Our Services" name="Service" />
+            <div>
                 {/* Services Start */}
                 <div className="container-fluid service py-5">
                     <div className="container py-5">
@@ -18,60 +32,25 @@ function Service() {
                             </p>
                         </div>
                         <div className="row g-4">
-                            <div className="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                                <div className="service-item p-4">
-                                    <div className="service-icon mb-4">
-                                        <i className="fa fa-phone-alt fa-2x" />
-                                    </div>
-                                    <h5 className="mb-3">Phone Reservation</h5>
-                                    <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ipsam quasi quibusdam ipsa perferendis iusto?</p>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                                <div className="service-item p-4">
-                                    <div className="service-icon mb-4">
-                                        <i className="fa fa-money-bill-alt fa-2x" />
-                                    </div>
-                                    <h5 className="mb-3">Special Rates</h5>
-                                    <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ipsam quasi quibusdam ipsa perferendis iusto?</p>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                                <div className="service-item p-4">
-                                    <div className="service-icon mb-4">
-                                        <i className="fa fa-road fa-2x" />
-                                    </div>
-                                    <h5 className="mb-3">One Way Rental</h5>
-                                    <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ipsam quasi quibusdam ipsa perferendis iusto?</p>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                                <div className="service-item p-4">
-                                    <div className="service-icon mb-4">
-                                        <i className="fa fa-umbrella fa-2x" />
-                                    </div>
-                                    <h5 className="mb-3">Life Insurance</h5>
-                                    <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ipsam quasi quibusdam ipsa perferendis iusto?</p>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                                <div className="service-item p-4">
-                                    <div className="service-icon mb-4">
-                                        <i className="fa fa-building fa-2x" />
-                                    </div>
-                                    <h5 className="mb-3">City to City</h5>
-                                    <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ipsam quasi quibusdam ipsa perferendis iusto?</p>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                                <div className="service-item p-4">
-                                    <div className="service-icon mb-4">
-                                        <i className="fa fa-car-alt fa-2x" />
-                                    </div>
-                                    <h5 className="mb-3">Free Rides</h5>
-                                    <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ipsam quasi quibusdam ipsa perferendis iusto?</p>
-                                </div>
-                            </div>
+                            {
+                                service && service.map((data) => {
+                                    console.log(data)
+                                    return (
+                                        <div className="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                                            <div className="service-item p-4">
+                                                <div className="service-img">
+                                                    {/* <i className="fa fa-phone-alt fa-2x" /> */}
+                                                    < img src={data.img}/>
+                                                </div>
+                                                <h5 className="mb-3">{data.title}</h5>
+                                                <p className="mb-0">{data.description}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+
+
                         </div>
                     </div>
                 </div>
@@ -228,8 +207,8 @@ function Service() {
                 {/* Banner End */}
             </div>
             <Footer />
-    </div>
-  )
+        </div>
+    )
 }
 
 export default Service
