@@ -51,17 +51,15 @@ function Anavbar() {
                                 <div className="dropdown-menu m-0">
                                     <NavLink to="/Addfeatures" className="dropdown-item">Add Feature</NavLink>
                                     <NavLink to="/Addcountry" className="dropdown-item">Add Countries</NavLink>
-                                    <NavLink to="/AddTestimonial" className="dropdown-item">Add Testimonial</NavLink>
                                     <NavLink to="/Addtraining" className="dropdown-item">Add Training</NavLink>
                                 </div>
                             </div>
                             <div className="nav-item dropdown">
                                 <a href="#" className="nav-link" data-bs-toggle="dropdown"><span className="dropdown-toggle">Managing Data</span></a>
                                 <div className="dropdown-menu m-0">
-                                    <NavLink to="/Addfeatures" className="dropdown-item">Feature Manage</NavLink>
-                                    <NavLink to="/Addcountry" className="dropdown-item">Countries Manage</NavLink>
-                                    <NavLink to="/AddTestimonial" className="dropdown-item">Testimonial Manage</NavLink>
-                                    <NavLink to="/Addtraining" className="dropdown-item">Training Manage</NavLink>
+                                    <NavLink to="/Managefeatures" className="dropdown-item">Feature Manage</NavLink>
+                                    <NavLink to="/Managecountry" className="dropdown-item">Countries Manage</NavLink>
+                                    <NavLink to="/Managetraining" className="dropdown-item">Training Manage</NavLink>
                                 </div>
                             </div>
                             {/* <NavLink to="/Contact" className="nav-item nav-link">Contact</NavLink> */}

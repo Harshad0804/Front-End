@@ -7,7 +7,7 @@ function About() {
     return (
         <div>
             <Navbar />
-            <Header />
+            <Header title="About us" name="About" />
 
             <div>
                 {/* About Start */}

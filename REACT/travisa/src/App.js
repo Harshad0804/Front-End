@@ -12,8 +12,10 @@ import Error from './Travisa/Pages/Error'
 import Addcountries from './Admin/Admin-pages/Addcountries'
 import Dashboard from './Admin/Admin-pages/Dashboard'
 import Addfeatures from './Admin/Admin-pages/Addfeatures'
-import Addtestimonial from './Admin/Admin-pages/Addtestimonial'
 import Addtraining from './Admin/Admin-pages/Addtraining'
+import Countrymanage from './Admin/Managing-Data/Countrymanage'
+import Featuresmanage from './Admin/Managing-Data/Featuresmanage'
+import Trainingmanage from './Admin/Managing-Data/Trainingmanage'
 
 function App() {
   return (
@@ -21,29 +23,35 @@ function App() {
       {/* <h1>Hello this new Website</h1> */}
 
       <BrowserRouter>
-      
-      <Routes>
-        {/* Website pages */}
-        <Route path="/" element={<Home />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Service" element={<Service />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/Features" element={<Feature />} />
-        <Route path="/Countries" element={<Countries />} />
-        <Route path="/Training" element={<Training />} />
-        <Route path="/Testimonial" element={<Testimonial />} />
-        <Route path="*" element={<Error />} />
+
+        <Routes>
+          {/* Website pages */}
+          <Route path="/" element={<Home />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Service" element={<Service />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/Features" element={<Feature />} />
+          <Route path="/Countries" element={<Countries />} />
+          <Route path="/Training" element={<Training />} />
+          <Route path="/Testimonial" element={<Testimonial />} />
+          <Route path="*" element={<Error />} />
 
 
-        {/* Admin pages */}
-        <Route path="dashboard" element={<Dashboard />} />
-        
-        <Route path="Addcountry" element={<Addcountries />} />
-        <Route path="Addfeatures" element={<Addfeatures />} />
-        <Route path="AddTestimonial" element={<Addtestimonial />} />
-        <Route path="Addtraining" element={<Addtraining />} />
-      </Routes>
-      
+          {/* Admin pages */}
+          <Route path="dashboard" element={<Dashboard />} />
+
+          <Route path="/Addcountry" element={<Addcountries />} />
+          <Route path="/Addfeatures" element={<Addfeatures />} />
+          <Route path="/Addtraining" element={<Addtraining />} />
+
+          {/* Admin Manage Data */}
+          <Route path="/Managecountry" element={<Countrymanage />} />
+          <Route path="/Managefeatures" element={<Featuresmanage />} />
+          <Route path="/Managetraining" element={<Trainingmanage />} />
+
+
+        </Routes>
+
       </BrowserRouter>
     </div>
   )

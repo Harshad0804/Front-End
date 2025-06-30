@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Common/Navbar'
 import Header from '../Common/Header'
 import Footer from '../Common/Footer'
+import axios from 'axios'
 
 function Feature() {
+
+    const [features, setfeatures] = useState([])
+
+    useEffect(() => {
+        fetchdata()
+    }, [])
+
+    const fetchdata = async () => {
+        const res = await axios.get("http://localhost:3000/feature")
+        console.log(res.data)
+        setfeatures(res.data)
+    }
+
+
     return (
         <div>
             <Navbar />
@@ -21,54 +36,30 @@ function Feature() {
                             <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat deleniti amet at atque sequi quibusdam cumque itaque repudiandae temporibus, eius nam mollitia voluptas maxime veniam necessitatibus saepe in ab? Repellat!</p>
                         </div>
                         <div className="row g-4 justify-content-center text-center">
-                            <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
-                                <div className="feature-item text-center p-4">
-                                    <div className="feature-icon p-3 mb-4">
-                                        <i className="fas fa-dollar-sign fa-4x text-primary" />
-                                    </div>
-                                    <div className="feature-content d-flex flex-column">
-                                        <h5 className="mb-3">Cost-Effective</h5>
-                                        <p className="mb-3">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                                        <a className="btn btn-secondary rounded-pill" href="#">Read More<i className="fas fa-arrow-right ms-2" /></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                                <div className="feature-item text-center p-4">
-                                    <div className="feature-icon p-3 mb-4">
-                                        <i className="fab fa-cc-visa fa-4x text-primary" />
-                                    </div>
-                                    <div className="feature-content d-flex flex-column">
-                                        <h5 className="mb-3">Visa Assistance</h5>
-                                        <p className="mb-3">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                                        <a className="btn btn-secondary rounded-pill" href="#">Read More<i className="fas fa-arrow-right ms-2" /></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
-                                <div className="feature-item text-center p-4">
-                                    <div className="feature-icon p-3 mb-4">
-                                        <i className="fas fa-atlas fa-4x text-primary" />
-                                    </div>
-                                    <div className="feature-content d-flex flex-column">
-                                        <h5 className="mb-3">Faster Processing</h5>
-                                        <p className="mb-3">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                                        <a className="btn btn-secondary rounded-pill" href="#">Read More<i className="fas fa-arrow-right ms-2" /></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                                <div className="feature-item text-center p-4">
-                                    <div className="feature-icon p-3 mb-4">
-                                        <i className="fas fa-users fa-4x text-primary" />
-                                    </div>
-                                    <div className="feature-content d-flex flex-column">
-                                        <h5 className="mb-3">Direct Interviews</h5>
-                                        <p className="mb-3">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                                        <a className="btn btn-secondary rounded-pill" href="#">Read More<i className="fas fa-arrow-right ms-2" /></a>
-                                    </div>
-                                </div>
-                            </div>
+
+
+                            {
+                                features && features.map((data) => {
+                                    console.log(data)
+                                    return (
+                                        <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
+                                            <div className="feature-item text-center p-4">
+                                                <div className="p-3 mb-4">
+                                                    {/* <i className="fas fa-atlas fa-4x text-primary" /> */}
+                                                    <img src={data.img}  className="img-fluid w-100 rounded"  style={{height:"300px",width:"300px"}} alt />
+                                                </div>
+                                                <div className="feature-content d-flex flex-column">
+                                                    <h5 className="mb-3">{data.title}</h5>
+                                                    <p className="mb-3">{data.description}</p>
+                                                    <a className="btn btn-secondary rounded-pill" href="#">Read More<i className="fas fa-arrow-right ms-2" /></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                                )
+                            }
+
                             <div className="col-12">
                                 <a className="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s" href="#">More Features</a>
                             </div>

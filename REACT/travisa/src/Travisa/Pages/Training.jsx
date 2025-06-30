@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Common/Navbar'
 import Header from '../Common/Header'
 import Footer from '../Common/Footer'
+import axios from 'axios'
 
 function Training() {
+    const [training, settraining] = useState([])
+
+    useEffect(() => {
+        fetchdata()
+    }, [])
+
+    const fetchdata = async () => {
+        const res = await axios.get("http://localhost:3000/coaching")
+        console.log(res.data)
+        settraining(res.data)
+    }
     return (
         <div>
             <Navbar />
@@ -21,70 +33,32 @@ function Training() {
                             <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat deleniti amet at atque sequi quibusdam cumque itaque repudiandae temporibus, eius nam mollitia voluptas maxime veniam necessitatibus saepe in ab? Repellat!</p>
                         </div>
                         <div className="row g-4">
-                            <div className="col-lg-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
-                                <div className="training-item">
-                                    <div className="training-inner">
-                                        <img src="img/training-1.jpg" className="img-fluid w-100 rounded" alt="Image" />
-                                        <div className="training-title-name">
-                                            <a href="#" className="h4 text-white mb-0">IELTS</a>
-                                            <a href="#" className="h4 text-white mb-0">Coaching</a>
+
+
+                            {
+                                training && training.map((data) => {
+                                    console.log(data)
+                                    return (
+                                        <div className="col-lg-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
+                                            <div className="training-item">
+                                                <div className="training-inner">
+                                                    <img src={data.img} style={{height:"400px"}} className="img-fluid w-100 rounded" alt="Image" />
+                                                    <div className="training-title-name">
+                                                        <a href="#" className="h4 text-white mb-0">{data.title}</a>
+                                                    </div>
+                                                </div>
+                                                <div className="training-content bg-secondary rounded-bottom p-4">
+                                                    <a href="#"><h4 className="text-white">{data.title}</h4></a>
+                                                    <p className="text-white-50">{data.desc}</p>
+                                                    <a className="btn btn-secondary rounded-pill text-white p-0" href="#">Read More <i className="fa fa-arrow-right" /></a>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="training-content bg-secondary rounded-bottom p-4">
-                                        <a href="#"><h4 className="text-white">IELTS Coaching</h4></a>
-                                        <p className="text-white-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, veritatis.</p>
-                                        <a className="btn btn-secondary rounded-pill text-white p-0" href="#">Read More <i className="fa fa-arrow-right" /></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                                <div className="training-item">
-                                    <div className="training-inner">
-                                        <img src="img/training-2.jpg" className="img-fluid w-100 rounded" alt="Image" />
-                                        <div className="training-title-name">
-                                            <a href="#" className="h4 text-white mb-0">TOEFL</a>
-                                            <a href="#" className="h4 text-white mb-0">Coaching</a>
-                                        </div>
-                                    </div>
-                                    <div className="training-content bg-secondary rounded-bottom p-4">
-                                        <a href="#"><h4 className="text-white">TOEFL Coaching</h4></a>
-                                        <p className="text-white-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, veritatis.</p>
-                                        <a className="btn btn-secondary rounded-pill text-white p-0" href="#">Read More <i className="fa fa-arrow-right" /></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
-                                <div className="training-item">
-                                    <div className="training-inner">
-                                        <img src="img/training-3.jpg" className="img-fluid w-100 rounded" alt="Image" />
-                                        <div className="training-title-name">
-                                            <a href="#" className="h4 text-white mb-0">PTE</a>
-                                            <a href="#" className="h4 text-white mb-0">Coaching</a>
-                                        </div>
-                                    </div>
-                                    <div className="training-content bg-secondary rounded-bottom p-4">
-                                        <a href="#"><h4 className="text-white">PTE Coaching</h4></a>
-                                        <p className="text-white-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, veritatis.</p>
-                                        <a className="btn btn-secondary rounded-pill text-white p-0" href="#">Read More <i className="fa fa-arrow-right" /></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                                <div className="training-item">
-                                    <div className="training-inner">
-                                        <img src="img/training-4.jpg" className="img-fluid w-100 rounded" alt="Image" />
-                                        <div className="training-title-name">
-                                            <a href="#" className="h4 text-white mb-0">OET</a>
-                                            <a href="#" className="h4 text-white mb-0">Coaching</a>
-                                        </div>
-                                    </div>
-                                    <div className="training-content bg-secondary rounded-bottom p-4">
-                                        <a href="#"><h4 className="text-white">OET Coaching</h4></a>
-                                        <p className="text-white-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, veritatis.</p>
-                                        <a className="btn btn-secondary rounded-pill text-white p-0" href="#">Read More <i className="fa fa-arrow-right" /></a>
-                                    </div>
-                                </div>
-                            </div>
+                                    )
+                                }
+                                )
+                            }
+
                             <div className="col-12 text-center">
                                 <a className="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s" href="#">View More</a>
                             </div>

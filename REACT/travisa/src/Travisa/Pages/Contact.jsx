@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Common/Navbar'
 import Header from '../Common/Header'
 import Footer from '../Common/Footer'
+import axios from 'axios'
 
 function Contact() {
+
+    const [contacts, setcontacts] = useState([])
+
+    useEffect(() => {
+        fetchdata()
+    }, [])
+
+    const fetchdata = async () => {
+        const res = await axios.get("http://localhost:3000/contact")
+        console.log(res.data)
+        setcontacts(res.data)
+    }
+
+
     return (
         <div>
             <Navbar />
-            <Header title="Contact Us" name="Contact"/>
+            <Header title="Contact Us" name="Contact" />
 
             {/* Contact Start */}
             <div className="container-fluid contact overflow-hidden py-5">
@@ -131,58 +146,28 @@ function Contact() {
                             <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat deleniti amet at atque sequi quibusdam cumque itaque repudiandae temporibus, eius nam mollitia voluptas maxime veniam necessitatibus saepe in ab? Repellat!</p>
                         </div>
                         <div className="row g-4 justify-content-center">
-                            <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
-                                <div className="office-item p-4">
-                                    <div className="office-img mb-4">
-                                        <img src="img/office-2.jpg" className="img-fluid w-100 rounded" alt />
-                                    </div>
-                                    <div className="office-content d-flex flex-column">
-                                        <h4 className="mb-2">Australia</h4>
-                                        <a href="#" className="text-secondary fs-5 mb-2">+123.456.7890</a>
-                                        <a href="#" className="text-muted fs-5 mb-2">travisa@example.com</a>
-                                        <p className="mb-0">123, First Floor, 123 St Roots Terrace, Los Angeles 90010 Unitd States of America.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                                <div className="office-item p-4">
-                                    <div className="office-img mb-4">
-                                        <img src="img/office-1.jpg" className="img-fluid w-100 rounded" alt />
-                                    </div>
-                                    <div className="office-content d-flex flex-column">
-                                        <h4 className="mb-2">Canada</h4>
-                                        <a href="#" className="text-secondary fs-5 mb-2">(012) 0345 6789</a>
-                                        <a href="#" className="text-muted fs-5 mb-2">travisa@example.com</a>
-                                        <p className="mb-0">123, First Floor, 123 St Roots Terrace, Los Angeles 90010 Unitd States of America.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
-                                <div className="office-item p-4">
-                                    <div className="office-img mb-4">
-                                        <img src="img/office-3.jpg" className="img-fluid w-100 rounded" alt />
-                                    </div>
-                                    <div className="office-content d-flex flex-column">
-                                        <h4 className="mb-2">United Kingdom</h4>
-                                        <a href="#" className="text-secondary fs-5 mb-2">01234.567.890</a>
-                                        <a href="#" className="text-muted fs-5 mb-2">travisa@example.com</a>
-                                        <p className="mb-0">123, First Floor, 123 St Roots Terrace, Los Angeles 90010 Unitd States of America.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                                <div className="office-item p-4">
-                                    <div className="office-img mb-4">
-                                        <img src="img/office-4.jpg" className="img-fluid w-100 rounded" alt />
-                                    </div>
-                                    <div className="office-content d-flex flex-column">
-                                        <h4 className="mb-2">India</h4>
-                                        <a href="#" className="text-secondary fs-5 mb-2">+123.45.67890</a>
-                                        <a href="#" className="text-muted fs-5 mb-2">travisa@example.com</a>
-                                        <p className="mb-0">123, First Floor, 123 St Roots Terrace, Los Angeles 90010 Unitd States of America.</p>
-                                    </div>
-                                </div>
-                            </div>
+                            {
+                                contacts && contacts.map((data) => {
+                                    console.log(data)
+                                    return (
+                                        <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                                            <div className="office-item p-4">
+                                                <div style={{height:"300px"}} className="office-img mb-4">
+                                                    <img src={data.img}  className="img-fluid w-100 rounded" alt />
+                                                </div>
+                                                <div className="office-content d-flex flex-column">
+                                                    <h4 className="mb-2">{data.title}</h4>
+                                                    <a href="#" className="text-secondary fs-5 mb-2">{data.phone}</a>
+                                                    <a href="#" className="text-muted fs-5 mb-2">{data.email}</a>
+                                                    <p className="mb-0">{data.address}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+
+
                             <div className="col-12 pt-5 wow zoomIn" data-wow-delay="0.1s">
                                 <div className="rounded h-100">
                                     <iframe className="rounded w-100" style={{ height: 500 }} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
