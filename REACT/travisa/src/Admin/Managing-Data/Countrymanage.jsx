@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Anavbar from '../Admin-Common/Anavbar'
 import Aheader from '../Admin-Common/Aheader'
+import axios from 'axios'
 
 function Countrymanage() {
+
+  const [countrymanage, setcountrymanage] = useState([])
+
+  useEffect(() => {
+    fetchdata()
+  }, [])
+
+  const fetchdata = async () => {
+    const res = await axios.get("http://localhost:3000/country")
+    console.log(res.data)
+    setcountrymanage(res.data)
+  }
+
+
   return (
     <div>
       <Anavbar />
@@ -12,35 +27,37 @@ function Countrymanage() {
         <table class="table my-4 table-striped table-dark">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">ID</th>
+              <th scope="col">TITLE</th>
+              <th scope="col">IMAGE</th>
+              <th scope="col">FLAG</th>
+              <th scope="col">MANAGE</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>
-                <button className='btn btn-info'>View</button>
-                <button className='btn btn-success mx-3'>Edit</button>
-                <button className='btn btn-danger'>Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
+
+
+            {
+              countrymanage && countrymanage.map((data) => {
+                console.log(data)
+                return (
+                  <tr>
+                    <th scope="row">{data.id}</th>
+                    <td>{data.title}</td>
+                    <td>{data.img}</td>
+                    <td>{data.flag}</td>
+                    <td>
+                      <button className='btn btn-info'>View</button>
+                      <button className='btn btn-success mx-3'>Edit</button>
+                      <button className='btn btn-danger'>Delete</button>
+                    </td>
+                  </tr>
+                )
+              })
+            }
+
+
+
           </tbody>
         </table>
       </div>
