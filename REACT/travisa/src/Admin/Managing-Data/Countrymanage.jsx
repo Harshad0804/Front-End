@@ -17,6 +17,12 @@ function Countrymanage() {
     setcountrymanage(res.data)
   }
 
+  // Delete Data
+  const removedata = async (id)=>{
+    const res = await axios.delete(`http://localhost:3000/country/${id}`)
+    fetchdata()
+  }
+
 
   return (
     <div>
@@ -29,8 +35,6 @@ function Countrymanage() {
             <tr>
               <th scope="col">ID</th>
               <th scope="col">TITLE</th>
-              <th scope="col">IMAGE</th>
-              <th scope="col">FLAG</th>
               <th scope="col">MANAGE</th>
             </tr>
           </thead>
@@ -44,12 +48,10 @@ function Countrymanage() {
                   <tr>
                     <th scope="row">{data.id}</th>
                     <td>{data.title}</td>
-                    <td>{data.img}</td>
-                    <td>{data.flag}</td>
                     <td>
                       <button className='btn btn-info'>View</button>
                       <button className='btn btn-success mx-3'>Edit</button>
-                      <button className='btn btn-danger'>Delete</button>
+                      <button className='btn btn-danger' onClick={()=>removedata(data.id)} >Delete</button>
                     </td>
                   </tr>
                 )
