@@ -20,6 +20,6 @@ export const Countslice = createSlice({
     }
 })
 
-export const {increment,decrement,zero} = countslice.actions
+export const {increment,decrement,zero} = Countslice.actions
 
 export default Countslice.reducer;
