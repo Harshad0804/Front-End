@@ -1,5 +1,7 @@
 import React from 'react'
 import Count from './data/counter/Count'
+import Addtodo from './data/Todolist/Addtodo'
+import Todolist from './data/Todolist/Todolist'
 
 function App() {
   return (
@@ -9,11 +11,12 @@ function App() {
 
       <div className="App"> 
       {/* Task-1 */}
-      <Count />
+      {/* <Count /> */}
 
       {/* Task-2 */}
       
-      
+      <Addtodo />
+      <Todolist />
       </div>
     </div>
   )
