@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Weather Forecast</title>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#06b6d4;
+      --muted:#9aa4b2;
+      --glass: rgba(255,255,255,0.04);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; min-height:100vh; background:linear-gradient(180deg,#071428 0%, #0f1724 100%); color:#e6eef6; display:flex; align-items:center; justify-content:center; padding:28px}
+    .app{width:100%; max-width:960px}
+
+    header{display:flex; gap:12px; align-items:center; margin-bottom:20px}
+    .logo{display:flex; align-items:center; gap:10px}
+    .logo .mark{width:44px; height:44px; border-radius:8px; background:linear-gradient(135deg,var(--accent),#3b82f6); display:flex; align-items:center; justify-content:center; font-weight:700}
+    .title{font-size:18px}
+
+    .search{display:flex; gap:10px; align-items:center}
+    input[type="search"]{background:var(--glass); border:1px solid rgba(255,255,255,0.04); padding:10px 12px; border-radius:10px; color:inherit; outline:none; width:320px}
+    button{background:linear-gradient(90deg,var(--accent),#60a5fa); border:none; padding:10px 14px; border-radius:10px; cursor:pointer}
+    button.secondary{background:transparent; border:1px solid rgba(255,255,255,0.06)}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:14px; padding:18px; box-shadow: 0 6px 18px rgba(2,6,23,0.6);}
+
+    .main{display:grid; grid-template-columns: 1fr 320px; gap:18px}
+    @media (max-width:880px){.main{grid-template-columns:1fr} .search input{width:100%}}
+
+    .current{display:flex; gap:14px; align-items:center}
+    .bigtemp{font-size:56px; font-weight:600}
+    .current .meta{color:var(--muted)}
+
+    .details{margin-top:12px; display:flex; gap:12px; color:var(--muted); flex-wrap:wrap}
+    .detail{background:rgba(255,255,255,0.02); padding:8px 10px; border-radius:8px}
+
+    .forecast{display:flex; gap:10px; margin-top:16px; overflow:auto; padding-bottom:6px}
+    .day{min-width:110px; background:rgba(255,255,255,0.02); border-radius:10px; padding:12px; text-align:center}
+    .day .dayname{font-weight:600}
+    .day .temps{margin-top:8px; color:var(--muted)}
+
+    .rightside{display:flex; flex-direction:column; gap:12px}
+    .map{height:220px; border-radius:10px; background:linear-gradient(180deg, rgba(6,182,212,0.06), rgba(96,165,250,0.03)); display:flex; align-items:center; justify-content:center; color:var(--muted)}
+
+    footer{margin-top:12px; color:var(--muted); font-size:13px; text-align:center}
+
+    /* small helper */
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">
+        <div class="mark">W</div>
+        <div>
+          <div class="title">Simple Weather</div>
+          <div class="muted">Forecast using Open-Meteo (no API key)</div>
+        </div>
+      </div>
+      <div style="flex:1"></div>
+      <div class="search">
+        <input id="q" type="search" placeholder="Enter city (e.g. Delhi, London)" />
+        <button id="searchBtn">Search</button>
+        <button id="locBtn" class="secondary" title="Use my location">Use my location</button>
+      </div>
+    </header>
+
+    <div class="card main">
+      <div>
+        <div id="currentCard" class="card" style="padding:18px">
+          <div class="current">
+            <div>
+              <div id="weatherIcon" style="font-size:44px">☀️</div>
+            </div>
+            <div>
+              <div style="display:flex; align-items:baseline; gap:12px">
+                <div class="bigtemp" id="temp">--°C</div>
+                <div>
+                  <div id="locationName">Search a city</div>
+                  <div class="muted" id="timeInfo">--</div>
+                </div>
+              </div>
+              <div class="details" id="details"></div>
+            </div>
+          </div>
+
+          <div class="forecast" id="forecast"></div>
+        </div>
+      </div>
+
+      <aside class="rightside">
+        <div class="card map" id="mapCard">Map preview<br/><small class="muted">(static, opens map on click)</small></div>
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center">
+            <div>Units</div>
+            <div>
+              <button id="unitToggle" class="secondary">°C / °F</button>
+            </div>
+          </div>
+          <div style="margin-top:10px; color:var(--muted); font-size:13px">Tip: you can press Enter to search.</div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>Data from Open‑Meteo — free, no API key required.</footer>
+  </div>
+
+  <script>
+    const qEl = document.getElementById('q');
+    const searchBtn = document.getElementById('searchBtn');
+    const locBtn = document.getElementById('locBtn');
+    const tempEl = document.getElementById('temp');
+    const locationNameEl = document.getElementById('locationName');
+    const timeInfoEl = document.getElementById('timeInfo');
+    const forecastEl = document.getElementById('forecast');
+    const detailsEl = document.getElementById('details');
+    const weatherIconEl = document.getElementById('weatherIcon');
+    const mapCard = document.getElementById('mapCard');
+    const unitToggle = document.getElementById('unitToggle');
+
+    let unit = 'c'; // 'c' or 'f'
+
+    function cToF(c){return (c * 9/5) + 32}
+
+    unitToggle.addEventListener('click', ()=>{
+      unit = (unit === 'c') ? 'f' : 'c';
+      unitToggle.textContent = unit === 'c' ? '°C / °F' : '°F / °C';
+      // If there's displayed data, re-render it
+      if(currentWeatherCache) renderCurrent(currentWeatherCache);
+    });
+
+    qEl.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') searchBtn.click(); });
+
+    searchBtn.addEventListener('click', ()=>{
+      const q = qEl.value.trim();
+      if(!q) return alert('Please enter a city name');
+      geocodeAndFetch(q);
+    });
+
+    locBtn.addEventListener('click', ()=>{
+      if(!navigator.geolocation) return alert('Geolocation not supported');
+      navigator.geolocation.getCurrentPosition(pos=>{
+        const {latitude, longitude} = pos.coords;
+        fetchWeather(latitude, longitude, `My location (${latitude.toFixed(2)}, ${longitude.toFixed(2)})`);
+      }, err=>{ alert('Unable to get location: '+err.message) });
+    });
+
+    async function geocodeAndFetch(name){
+      try{
+        const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(name)}&count=5&language=en&format=json`;
+        const res = await fetch(url);
+        const data = await res.json();
+        if(!data.results || data.results.length === 0) return alert('No results found for "'+name+'"');
+        const place = data.results[0];
+        fetchWeather(place.latitude, place.longitude, `${place.name}${place.admin1 ? ', '+place.admin1: ''}${place.country ? ', '+place.country: ''}`);
+      }catch(e){ console.error(e); alert('Failed to lookup location'); }
+    }
+
+    let currentWeatherCache = null;
+
+    function weatherCodeToEmoji(code){
+      // simplified mapping from Open-Meteo weathercode
+      // https://open-meteo.com/en/docs
+      if(code === null || code === undefined) return '❓';
+      if(code === 0) return '☀️';
+      if(code === 1 || code === 2 || code === 3) return '⛅️';
+      if(code >= 45 && code <= 48) return '🌫️';
+      if(code >= 51 && code <= 67) return '🌦️';
+      if(code >= 71 && code <= 77) return '🌨️';
+      if(code >= 80 && code <= 82) return '🌧️';
+      if(code >= 85 && code <= 86) return '❄️';
+      if(code >= 95) return '⛈️';
+      return '🌈';
+    }
+
+    async function fetchWeather(lat, lon, placeName){
+      try{
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto&daily=temperature_2m_max,temperature_2m_min,weathercode&temperature_unit=celsius`;
+        const res = await fetch(url);
+        const data = await res.json();
+        if(data && data.current_weather){
+          currentWeatherCache = {placeName, lat, lon, data};
+          renderCurrent(currentWeatherCache);
+        } else {
+          alert('No weather data available for this location');
+        }
+      }catch(e){ console.error(e); alert('Failed to fetch weather'); }
+    }
+
+    function renderCurrent(cache){
+      const {placeName, lat, lon, data} = cache;
+      const cw = data.current_weather;
+      const daily = data.daily;
+      const tempC = cw.temperature;
+      const displayTemp = unit === 'c' ? `${Math.round(tempC)}°C` : `${Math.round(cToF(tempC))}°F`;
+      tempEl.textContent = displayTemp;
+      locationNameEl.textContent = placeName || 'Unknown location';
+      timeInfoEl.textContent = `As of ${cw.time} — wind ${Math.round(cw.windspeed)} km/h`;
+      weatherIconEl.textContent = weatherCodeToEmoji(cw.weathercode);
+
+      // details
+      detailsEl.innerHTML = '';
+      const feels = document.createElement('div'); feels.className='detail'; feels.textContent = `Wind: ${Math.round(cw.windspeed)} km/h`; detailsEl.appendChild(feels);
+      const dir = document.createElement('div'); dir.className='detail'; dir.textContent = `Direction: ${cw.winddirection}°`; detailsEl.appendChild(dir);
+
+      // forecast
+      forecastEl.innerHTML = '';
+      if(daily && daily.time){
+        for(let i=0;i<daily.time.length;i++){
+          const dname = (new Date(daily.time[i])).toLocaleDateString(undefined,{weekday:'short'});
+          const maxC = daily.temperature_2m_max[i];
+          const minC = daily.temperature_2m_min[i];
+          const wcode = daily.weathercode[i];
+          const max = unit === 'c' ? `${Math.round(maxC)}°` : `${Math.round(cToF(maxC))}°`;
+          const min = unit === 'c' ? `${Math.round(minC)}°` : `${Math.round(cToF(minC))}°`;
+          const card = document.createElement('div'); card.className='day';
+          card.innerHTML = `<div class="dayname">${dname}</div><div style="font-size:26px">${weatherCodeToEmoji(wcode)}</div><div class="temps">${max} / ${min}</div>`;
+          forecastEl.appendChild(card);
+        }
+      }
+
+      // map preview
+      mapCard.innerHTML = `<div style="text-align:center">${placeName}<br/><small class='muted'>Lat: ${lat.toFixed(2)}, Lon: ${lon.toFixed(2)}</small><br/><a href='https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=8/${lat}/${lon}' target='_blank' style='color:inherit; text-decoration:underline; margin-top:6px; display:inline-block'>Open map</a></div>`;
+    }
+
+    // small demo: show a default city to avoid blank screen
+    geocodeAndFetch('New Delhi');
+  </script>
+</body>
+</html>
